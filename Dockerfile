@@ -1,8 +1,9 @@
-FROM python:3.8
+FROM python:3.6.12-slim-buster@sha256:09bb81730d8d3f1b208d9c5ba4be66747ef29323597bedab6404b884a016685d
 
 WORKDIR /app
 
-RUN wget -q https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -P /usr/local/bin \
+RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev wget build-essential \
+&& wget -q https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -P /usr/local/bin \
 && chmod +x /usr/local/bin/wait-for-it.sh \
 && mkdir -p /app \
 && useradd -u 901 -r ebau-gwr --create-home \

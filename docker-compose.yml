@@ -9,7 +9,7 @@ services:
       # - POSTGRES_PASSWORD=
     volumes:
       - dbdata:/var/lib/postgresql/data
-  backend:
+  gwr:
     image: adfinis/ebau-gwr
     ports:
       - "8000:8000"
