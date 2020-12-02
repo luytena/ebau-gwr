@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV HOME=/home/ebau-gwr
 
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE ebau-gwr.settings
+ENV DJANGO_SETTINGS_MODULE ebau_gwr.settings
 ENV APP_HOME=/app
 ENV UWSGI_INI /app/uwsgi.ini
 

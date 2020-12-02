@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.postgres",
-    "ebau-gwr.core.apps.DefaultConfig",
+    "ebau_gwr.core.apps.DefaultConfig",
 ]
 
 if ENV == "dev":
@@ -43,8 +43,8 @@ MIDDLEWARE = [
     "django.middleware.locale.LocaleMiddleware",
 ]
 
-ROOT_URLCONF = "ebau-gwr.urls"
-WSGI_APPLICATION = "ebau-gwr.wsgi.application"
+ROOT_URLCONF = "ebau_gwr.urls"
+WSGI_APPLICATION = "ebau_gwr.wsgi.application"
 
 
 # Database
@@ -86,7 +86,19 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-AUTH_USER_MODEL = "core.User"
+# Authentication
+OIDC_OP_USER_ENDPOINT = env.str("OIDC_OP_USER_ENDPOINT", default=None)
+OIDC_OP_TOKEN_ENDPOINT = "not supported in ebau-gwr, but a value is needed"
+OIDC_VERIFY_SSL = env.bool("OIDC_VERIFY_SSL", default=True)
+OIDC_USERNAME_CLAIM = env.str("OIDC_USERNAME_CLAIM", default="sub")
+OIDC_GROUPS_CLAIM = env.str("OIDC_GROUPS_CLAIM", default="ebau-gwr_groups")
+OIDC_BEARER_TOKEN_REVALIDATION_TIME = env.int(
+    "OIDC_BEARER_TOKEN_REVALIDATION_TIME", default=0
+)
+OIDC_OP_INTROSPECT_ENDPOINT = env.str("OIDC_OP_INTROSPECT_ENDPOINT", default=None)
+OIDC_RP_CLIENT_ID = env.str("OIDC_RP_CLIENT_ID", default=None)
+OIDC_RP_CLIENT_SECRET = env.str("OIDC_RP_CLIENT_SECRET", default=None)
+OIDC_DRF_AUTH_BACKEND = "ebau_gwr.oidc_auth.authentication.EbauGwrAuthenticationBackend"
 
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "rest_framework_json_api.exceptions.exception_handler",
@@ -100,6 +112,9 @@ REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (
         "rest_framework_json_api.renderers.JSONRenderer",
         "rest_framework.renderers.JSONRenderer",
+    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "mozilla_django_oidc.contrib.drf.OIDCAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_METADATA_CLASS": "rest_framework_json_api.metadata.JSONAPIMetadata",
