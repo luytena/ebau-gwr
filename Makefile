@@ -39,3 +39,8 @@ migrate: ## Migrate django
 .PHONY: dbshell
 dbshell: ## Start a psql shell
 	@docker-compose exec db psql -Uebau-gwr
+
+.PHONY: build_schemas
+build_schemas: ## Build the eCH schemas
+	@docker-compose run gwr python ./scripts/build_ech0216_parser.py
+	@docker-compose run gwr sh -c "isort ebau_gwr/core/schema/*.py && black ebau_gwr/core/schema/*.py"
