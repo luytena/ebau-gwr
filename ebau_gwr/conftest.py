@@ -3,6 +3,9 @@
 
 import pytest
 from django.core.cache import cache
+from rest_framework.test import APIClient
+
+from ebau_gwr.oidc_auth.models import OIDCUser
 
 # from factory.base import FactoryMetaClass
 # from pytest_factoryboy import register
@@ -20,11 +23,23 @@ from django.core.cache import cache
 # register_module(importlib.import_module(".core.factories", "ebau_gwr"))
 
 
-# @pytest.fixture
-# def admin_client(db, admin_user):
-#     client = APIClient()
-#     client.force_authenticate(user=admin_user)
-#     return client
+@pytest.fixture
+def admin_groups():
+    return ["admin"]
+
+
+@pytest.fixture
+def admin_user(settings, admin_groups):
+    return OIDCUser(
+        "sometoken", {"sub": "admin", settings.OIDC_GROUPS_CLAIM: admin_groups}
+    )
+
+
+@pytest.fixture
+def admin_client(db, admin_user):
+    client = APIClient()
+    client.force_authenticate(user=admin_user)
+    return client
 
 
 @pytest.fixture(scope="function", autouse=True)

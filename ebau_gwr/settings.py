@@ -110,7 +110,7 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.MultiPartParser",
     ),
     "DEFAULT_RENDERER_CLASSES": (
-        "rest_framework_json_api.renderers.JSONRenderer",
+        # "rest_framework_json_api.renderers.JSONRenderer",
         "rest_framework.renderers.JSONRenderer",
     ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -157,3 +157,7 @@ def parse_admins(admins):
 
 
 ADMINS = parse_admins(env.list("ADMINS", default=[]))
+
+
+# housing stat
+HS_BASE_URI = "https://www-r.housing-stat.ch/regbl/api/ech0216/2"
