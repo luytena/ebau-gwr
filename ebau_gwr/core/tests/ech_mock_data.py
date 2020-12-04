@@ -1,0 +1,31 @@
+getConstructionProjectResponse = (
+    b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'
+    b'<ns2:response xmlns="http://www.ech.ch/xmlns/eCH-0058/5" xmlns:ns2="http://www.ech.ch/xmlns/eCH-0216/2" xmlns:ns3="http://www.ech.ch/xmlns/eCH-0129/5" xmlns:ns4="http://www.ech.ch/xmlns/eCH-0044/4" xmlns:ns5="http://www.ech.ch/xmlns/eCH-0097/2" xmlns:ns6="http://www.ech.ch/xmlns/eCH-0010/6" xmlns:ns7="http://www.ech.ch/xmlns/eCH-0007/6" xmlns:ns8="http://www.ech.ch/xmlns/eCH-0008/3">\n'
+    b"    <ns2:getConstructionProjectResponse>\n"
+    b"        <ns2:constructionProjectsList>\n"
+    b"            <ns2:EPROID>193052735</ns2:EPROID>\n"
+    b"            <ns2:officialConstructionProjectFileNo>18-2015/48</ns2:officialConstructionProjectFileNo>\n"
+    b"            <ns2:extensionOfOfficialConstructionProjectFileNo>0</ns2:extensionOfOfficialConstructionProjectFileNo>\n"
+    b"            <ns2:constructionSurveyDept>134200</ns2:constructionSurveyDept>\n"
+    b'            <ns2:constructionProjectDescription>Abbruch "alte Molkerei" und Neubau Mehrfamilienhaus mit Tiefgarage</ns2:constructionProjectDescription>\n'
+    b"            <ns2:projectStatus>6703</ns2:projectStatus>\n"
+    b"        </ns2:constructionProjectsList>\n"
+    b"        <ns2:constructionProjectsList>\n"
+    b"            <ns2:EPROID>193118952</ns2:EPROID>\n"
+    b"            <ns2:officialConstructionProjectFileNo>1662-2017/49</ns2:officialConstructionProjectFileNo>\n"
+    b"            <ns2:extensionOfOfficialConstructionProjectFileNo>0</ns2:extensionOfOfficialConstructionProjectFileNo>\n"
+    b"            <ns2:constructionSurveyDept>134200</ns2:constructionSurveyDept>\n"
+    b"            <ns2:constructionProjectDescription>Neubau Einfamilienhaus und Neubau Reiheneinfamilienh\xc3\xa4user</ns2:constructionProjectDescription>\n"
+    b"            <ns2:projectStatus>6702</ns2:projectStatus>\n"
+    b"        </ns2:constructionProjectsList>\n"
+    b"        <ns2:constructionProjectsList>\n"
+    b"            <ns2:EPROID>193245350</ns2:EPROID>\n"
+    b"            <ns2:officialConstructionProjectFileNo>800-2018/78</ns2:officialConstructionProjectFileNo>\n"
+    b"            <ns2:extensionOfOfficialConstructionProjectFileNo>0</ns2:extensionOfOfficialConstructionProjectFileNo>\n"
+    b"            <ns2:constructionSurveyDept>134200</ns2:constructionSurveyDept>\n"
+    b"            <ns2:constructionProjectDescription>Neubau Luft-/Wasser-W\xc3\xa4rmepumpe (Aussenaufstellung)</ns2:constructionProjectDescription>\n"
+    b"            <ns2:projectStatus>6702</ns2:projectStatus>\n"
+    b"        </ns2:constructionProjectsList>\n"
+    b"    </ns2:getConstructionProjectResponse>\n"
+    b"</ns2:response>\n"
+)
