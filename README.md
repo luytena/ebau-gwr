@@ -1,7 +1,9 @@
 # ebau-gwr
 
-[![Build Status](https://travis-ci.com/adfinis/ebau-gwr.svg?branch=master)](https://travis-ci.com/adfinis/ebau-gwr)
-[![Pyup](https://pyup.io/repos/github/adfinis/ebau-gwr/shield.svg)](https://pyup.io/account/repos/github/adfinis/ebau-gwr/)
+**!!!WIP!!!**
+
+[![Build Status](https://github.com/adfinis/ebau-gwr/workflows/Tests/badge.svg)](https://github.com/adfinis/ebau-gwr/actions?query=workflow%3ATests)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/adfinis/ebau-gwr/blob/main/setup.cfg#L54)
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/adfinis-sygroup/ebau-gwr)
 
 GWR synchronisation for ebau projects
@@ -14,7 +16,7 @@ GWR synchronisation for ebau projects
 * docker
 * docker-compose
 
-After installing and configuring those, download [docker-compose.yml](https://raw.githubusercontent.com/adfinis/ebau-gwr/master/docker-compose.yml) and run the following command:
+After installing and configuring those, download [docker-compose.yml](https://raw.githubusercontent.com/adfinis/ebau-gwr/main/docker-compose.yml) and run the following command:
 
 ```bash
 docker-compose up -d
@@ -24,7 +26,7 @@ You can now access the api at [http://localhost:8000/api/v1/](http://localhost:8
 
 ### Configuration
 
-Document Merge Service is a [12factor app](https://12factor.net/) which means that configuration is stored in environment variables.
+ebau-gwr is a [12factor app](https://12factor.net/) which means that configuration is stored in environment variables.
 Different environment variable types are explained at [django-environ](https://github.com/joke2k/django-environ#supported-types).
 
 #### Common
