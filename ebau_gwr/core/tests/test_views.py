@@ -3,13 +3,13 @@ from django.conf import settings
 from django.urls import reverse
 from rest_framework import status
 
-from ebau_gwr.core.tests.ech_mock_data import getConstructionProjectResponse
+from ebau_gwr.core.tests.mock_xml import xml_data
 
 
 def test_search_view(admin_client, requests_mock, snapshot):
     requests_mock.get(
         f"{settings.HS_BASE_URI}/constructionprojects",
-        content=getConstructionProjectResponse,
+        content=xml_data("getConstructionProjectResponse"),
     )
     url = reverse("search-list")
     resp = admin_client.get(url, {"dept_no": 134200, "hs_token": "token"})
@@ -46,5 +46,38 @@ def test_search_view_external_error(admin_client, requests_mock, status_code, ms
     )
     url = reverse("search-list")
     resp = admin_client.get(url, {"dept_no": 134200, "hs_token": "token"})
+    assert resp.status_code == status_code
+    assert resp.json() == {"hs_error": msg}
+
+
+def test_construction_project_view(admin_client, requests_mock, snapshot):
+    requests_mock.get(
+        f"{settings.HS_BASE_URI}/constructionprojects/193052735",
+        content=xml_data("constructionProjectCompleteResponse"),
+    )
+    url = reverse("construction-project-detail", args=["193052735"])
+    resp = admin_client.get(url, {"hs_token": "token"})
+    assert resp.status_code == status.HTTP_200_OK
+    snapshot.assert_match(resp.json())
+
+
+@pytest.mark.parametrize(
+    "status_code,msg",
+    [
+        (400, "You should feel bad!"),
+        (500, "I should feel bad!"),
+        (401, "These are not the droids you're looking for"),
+    ],
+)
+def test_construction_project_view_external_error(
+    admin_client, requests_mock, status_code, msg
+):
+    requests_mock.get(
+        f"{settings.HS_BASE_URI}/constructionprojects/193052735",
+        status_code=status_code,
+        text=msg,
+    )
+    url = reverse("construction-project-detail", args=["193052735"])
+    resp = admin_client.get(url, {"hs_token": "token"})
     assert resp.status_code == status_code
     assert resp.json() == {"hs_error": msg}
