@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.postgres",
     "ebau_gwr.core.apps.DefaultConfig",
+    "ebau_gwr.linker.apps.LinkerConfig",
 ]
 
 if ENV == "dev":
@@ -102,7 +103,8 @@ OIDC_DRF_AUTH_BACKEND = "ebau_gwr.oidc_auth.authentication.EbauGwrAuthentication
 
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "rest_framework_json_api.exceptions.exception_handler",
-    "DEFAULT_PAGINATION_CLASS": "rest_framework_json_api.pagination.JsonApiPageNumberPagination",
+    # "DEFAULT_PAGINATION_CLASS": "rest_framework_json_api.pagination.JsonApiPageNumberPagination",
+    "PAGE_SIZE": 100,
     "DEFAULT_PARSER_CLASSES": (
         "rest_framework_json_api.parsers.JSONParser",
         "rest_framework.parsers.JSONParser",
