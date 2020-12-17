@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.postgres",
+    "generic_permissions.apps.GenericPermissionsConfig",
     "ebau_gwr.core.apps.DefaultConfig",
     "ebau_gwr.linker.apps.LinkerConfig",
 ]
@@ -100,6 +101,19 @@ OIDC_OP_INTROSPECT_ENDPOINT = env.str("OIDC_OP_INTROSPECT_ENDPOINT", default=Non
 OIDC_RP_CLIENT_ID = env.str("OIDC_RP_CLIENT_ID", default=None)
 OIDC_RP_CLIENT_SECRET = env.str("OIDC_RP_CLIENT_SECRET", default=None)
 OIDC_DRF_AUTH_BACKEND = "ebau_gwr.oidc_auth.authentication.EbauGwrAuthenticationBackend"
+
+
+# Extensions
+
+GENERIC_PERMISSIONS_PERMISSION_CLASSES = env.list(
+    "PERMISSION_CLASSES", default=default(["generic_permissions.permissions.AllowAny"])
+)
+GENERIC_PERMISSIONS_VISIBILITY_CLASSES = env.list(
+    "VISIBILITY_CLASSES", default=default(["generic_permissions.visibilities.Any"])
+)
+
+
+# DRF
 
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "rest_framework_json_api.exceptions.exception_handler",
