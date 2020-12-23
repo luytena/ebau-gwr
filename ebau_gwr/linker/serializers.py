@@ -1,9 +1,10 @@
+from generic_permissions.serializers import PermissionSerializerMixin
 from rest_framework_json_api import serializers
 
 from . import models
 
 
-class GWRLinkSerializer(serializers.ModelSerializer):
+class GWRLinkSerializer(PermissionSerializerMixin, serializers.ModelSerializer):
     class Meta:
         model = models.GWRLink
         fields = (
