@@ -19,7 +19,6 @@ def register_module(module):
             register(obj, base_name)
 
 
-register_module(importlib.import_module(".core.factories", "ebau_gwr"))
 register_module(importlib.import_module(".linker.factories", "ebau_gwr"))
 
 
