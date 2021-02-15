@@ -4,16 +4,16 @@ from __future__ import unicode_literals
 
 from snapshottest import Snapshot
 
-snapshots = Snapshot()
 
+snapshots = Snapshot()
 
 snapshots["test_gwrlink_list 1"] = {
     "data": [
         {
             "attributes": {
                 "context": {},
-                "eproid": "reason-son-current",
-                "local-id": "service-bank-arm",
+                "eproid": "run-too-successful",
+                "local-id": "decision-create",
             },
             "id": "9dd4e461-268c-8034-f5c8-564e155c67a6",
             "type": "gwr-links",
@@ -21,8 +21,8 @@ snapshots["test_gwrlink_list 1"] = {
         {
             "attributes": {
                 "context": {},
-                "eproid": "live-by-itself",
-                "local-id": "kitchen-develop",
+                "eproid": "lot-song-light",
+                "local-id": "education-art-apply",
             },
             "id": "9336ebf2-5087-d91c-818e-e6e9ec29f8c1",
             "type": "gwr-links",
@@ -30,8 +30,8 @@ snapshots["test_gwrlink_list 1"] = {
         {
             "attributes": {
                 "context": {},
-                "eproid": "series-those-player",
-                "local-id": "idea-eye-plan-third",
+                "eproid": "generation-maybe",
+                "local-id": "capital-loss-learn",
             },
             "id": "f561aaf6-ef0b-f14d-4208-bb46a4ccb3ad",
             "type": "gwr-links",
@@ -50,8 +50,8 @@ snapshots["test_gwrlink_retrieve 1"] = {
     "data": {
         "attributes": {
             "context": {},
-            "eproid": "mrs-shake-recent",
-            "local-id": "effort-meet",
+            "eproid": "note-act-source",
+            "local-id": "safe-follow-glass",
         },
         "id": "9dd4e461-268c-8034-f5c8-564e155c67a6",
         "type": "gwr-links",
