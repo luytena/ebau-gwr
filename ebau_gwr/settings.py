@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.postgres",
     "generic_permissions.apps.GenericPermissionsConfig",
-    "ebau_gwr.core.apps.DefaultConfig",
     "ebau_gwr.linker.apps.LinkerConfig",
 ]
 
