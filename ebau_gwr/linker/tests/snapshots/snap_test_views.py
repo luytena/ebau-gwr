@@ -38,8 +38,8 @@ snapshots["test_gwrlink_list 1"] = {
         },
     ],
     "links": {
-        "first": "http://testserver/api/v1/linker/link?page%5Bnumber%5D=1",
-        "last": "http://testserver/api/v1/linker/link?page%5Bnumber%5D=1",
+        "first": "http://testserver/api/v1/linker/gwr-links?page%5Bnumber%5D=1",
+        "last": "http://testserver/api/v1/linker/gwr-links?page%5Bnumber%5D=1",
         "next": None,
         "prev": None,
     },
