@@ -45,3 +45,7 @@ A list of configuration options which you need
 ## Contributing
 
 Look at our [contributing guidelines](CONTRIBUTING.md) to start with your first contribution.
+
+## Maintenance
+
+A few notes for maintainers can be found [here](MAINTENANCE.md).
