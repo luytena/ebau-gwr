@@ -25,3 +25,4 @@ class GWRLink(PermissionModelMixin, VisibilityModelMixin, models.Model):
 
     class Meta:
         unique_together = (("eproid", "local_id"),)
+        ordering = ["-id"]

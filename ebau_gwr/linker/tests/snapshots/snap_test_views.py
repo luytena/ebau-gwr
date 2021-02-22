@@ -4,11 +4,19 @@ from __future__ import unicode_literals
 
 from snapshottest import Snapshot
 
-
 snapshots = Snapshot()
 
 snapshots["test_gwrlink_list 1"] = {
     "data": [
+        {
+            "attributes": {
+                "context": {},
+                "eproid": "generation-maybe",
+                "local-id": "capital-loss-learn",
+            },
+            "id": "f561aaf6-ef0b-f14d-4208-bb46a4ccb3ad",
+            "type": "gwr-links",
+        },
         {
             "attributes": {
                 "context": {},
@@ -25,15 +33,6 @@ snapshots["test_gwrlink_list 1"] = {
                 "local-id": "education-art-apply",
             },
             "id": "9336ebf2-5087-d91c-818e-e6e9ec29f8c1",
-            "type": "gwr-links",
-        },
-        {
-            "attributes": {
-                "context": {},
-                "eproid": "generation-maybe",
-                "local-id": "capital-loss-learn",
-            },
-            "id": "f561aaf6-ef0b-f14d-4208-bb46a4ccb3ad",
             "type": "gwr-links",
         },
     ],
