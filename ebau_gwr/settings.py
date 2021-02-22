@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django.contrib.postgres",
     "generic_permissions.apps.GenericPermissionsConfig",
     "ebau_gwr.linker.apps.LinkerConfig",
+    "ebau_gwr.token_proxy.apps.TokenProxyConfig",
 ]
 
 if ENV == "dev":
@@ -175,4 +176,10 @@ ADMINS = parse_admins(env.list("ADMINS", default=[]))
 
 
 # housing stat
-HS_BASE_URI = "https://www-r.housing-stat.ch/regbl/api/ech0216/2"
+GWR_HOUSING_STAT_BASE_URI = "https://www-r.housing-stat.ch/regbl/api/ech0216/2"
+
+GWR_FERNET_KEY = env.str(
+    "GWR_FERNET_KEY", default=default("bb9QYLaW4Hb6EERac3b2rSbYWixxqwTO0Sozpb0VM4c=")
+)
+
+GWR_HOUSING_STAT_WSK_ID = env.int("GWR_WSK_ID", default=default(123456))

@@ -17,6 +17,7 @@ def register_module(module):
 
 
 register_module(importlib.import_module(".linker.factories", "ebau_gwr"))
+register_module(importlib.import_module(".token_proxy.factories", "ebau_gwr"))
 
 
 @pytest.fixture
