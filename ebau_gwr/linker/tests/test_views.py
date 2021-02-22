@@ -16,8 +16,8 @@ def test_gwrlink_list(
     snapshot.assert_match(resp.json())
 
 
-def test_gwrlink_retrieve(db, admin_client, deterministic_uuids, gwrlink, snapshot):
-    url = reverse("gwrlink-detail", args=[gwrlink.pk])
+def test_gwrlink_retrieve(db, admin_client, deterministic_uuids, gwr_link, snapshot):
+    url = reverse("gwrlink-detail", args=[gwr_link.pk])
 
     resp = admin_client.get(url)
     assert resp.status_code == HTTP_200_OK
@@ -48,14 +48,14 @@ def test_gwrlink_create(db, admin_client, deterministic_uuids, snapshot):
     snapshot.assert_match(resp.json())
 
 
-def test_gwrlink_patch(db, admin_client, deterministic_uuids, gwrlink, snapshot):
-    url = reverse("gwrlink-detail", args=[gwrlink.pk])
+def test_gwrlink_patch(db, admin_client, deterministic_uuids, gwr_link, snapshot):
+    url = reverse("gwrlink-detail", args=[gwr_link.pk])
 
-    assert gwrlink.eproid != "foo"
+    assert gwr_link.eproid != "foo"
 
     data = {
         "data": {
-            "id": gwrlink.pk,
+            "id": gwr_link.pk,
             "type": "gwr-links",
             "attributes": {
                 "eproid": "foo",
@@ -68,15 +68,15 @@ def test_gwrlink_patch(db, admin_client, deterministic_uuids, gwrlink, snapshot)
     resp = admin_client.patch(url, data)
     assert resp.status_code == HTTP_200_OK
     assert GWRLink.objects.count() == 1
-    gwrlink = GWRLink.objects.get(pk=gwrlink.pk)
+    gwrlink = GWRLink.objects.get(pk=gwr_link.pk)
     assert gwrlink.eproid == "foo"
     assert gwrlink.local_id == "bar"
     assert gwrlink.context == {"some-attr": "some value", "some-int-attr": 23}
     snapshot.assert_match(resp.json())
 
 
-def test_gwrlink_destroy(db, admin_client, deterministic_uuids, gwrlink, snapshot):
-    url = reverse("gwrlink-detail", args=[gwrlink.pk])
+def test_gwrlink_destroy(db, admin_client, deterministic_uuids, gwr_link, snapshot):
+    url = reverse("gwrlink-detail", args=[gwr_link.pk])
 
     assert GWRLink.objects.count() == 1
 
