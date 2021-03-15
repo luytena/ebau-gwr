@@ -31,7 +31,8 @@ Different environment variable types are explained at [django-environ](https://g
 
 #### Common
 
-A list of configuration options which you need
+A list of configuration options which you need to set when using ebau-gwr as a
+standalone service:
 
 * `SECRET_KEY`: A secret key used for cryptography. This needs to be a random string of a certain length. See [more](https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-SECRET_KEY).
 * `ALLOWED_HOSTS`: A list of hosts/domains your service will be served from. See [more](https://docs.djangoproject.com/en/2.1/ref/settings/#allowed-hosts).
@@ -41,6 +42,10 @@ A list of configuration options which you need
 * `DATABASE_NAME`: Name of database to use (default: ebau-gwr)
 * `DATABASE_USER`: Username to use when connecting to the database (default: ebau-gwr)
 * `DATABASE_PASSWORD`: Password to use when connecting to database
+
+##### App specific settings
+A list of configuration options which you need to set in any case:
+
 * `GWR_HOUSING_STAT_WSK_ID`: This is the ID that has been assigned to you by the BfS
 * `GWR_FERNET_KEY`: A secret key used for encrypting the passwords in housing stat credentials. Can be generated with the `generate_fernet_key` command
 
