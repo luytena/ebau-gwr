@@ -46,7 +46,7 @@ standalone service:
 ##### App specific settings
 A list of configuration options which you need to set in any case:
 
-* `GWR_HOUSING_STAT_WSK_ID`: This is the ID that has been assigned to you by the BfS
+* `GWR_WSK_ID`: This is the ID that has been assigned to you by the BfS
 * `GWR_FERNET_KEY`: A secret key used for encrypting the passwords in housing stat credentials. Can be generated with the `generate_fernet_key` command
 
 ## Contributing
