@@ -1,3 +1,15 @@
+# v0.2.0 (2021-04-14)
+
+### Feature
+* Introduce command to generate fernet key ([`949ef82`](https://github.com/adfinis-sygroup/ebau-gwr/commit/949ef82fe407680b2e961d1564aba5ac956ab50b))
+* Introduce token_proxy app ([`65f4323`](https://github.com/adfinis-sygroup/ebau-gwr/commit/65f43238b5a27cc55d7b087565b179a53aa4f2c4))
+
+### Fix
+* Define default ordering on GWRLink model ([`4a1fae3`](https://github.com/adfinis-sygroup/ebau-gwr/commit/4a1fae352ce4d3a269e111ddeb43a0d055926d89))
+
+### Documentation
+* **readme:** Document correct env var name for wsk_id ([`39140c9`](https://github.com/adfinis-sygroup/ebau-gwr/commit/39140c97feb94cd8bcdff053b82c6d0e2790386c))
+
 # v0.1.0 (2021-02-22)
 
 ### Feature
