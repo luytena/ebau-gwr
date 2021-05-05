@@ -8,6 +8,7 @@ from .client import HousingStatClient
 class TokenProxySerializer(serializers.ModelSerializer):
     username = serializers.CharField(write_only=True, required=False)
     password = serializers.CharField(write_only=True, required=False)
+    municipality = serializers.IntegerField(required=False)
     token = serializers.SerializerMethodField()
 
     def get_token(self, obj):
@@ -29,11 +30,16 @@ class TokenProxySerializer(serializers.ModelSerializer):
 
         username = validated_data.get("username")
         password = validated_data.get("password")
+        municipality = validated_data.get("municipality")
 
-        if username and password:
+        if username and password and municipality:
             user_creds, _ = models.HousingStatCreds.objects.update_or_create(
                 owner=user.username,
-                defaults={"username": username, "password": password},
+                defaults={
+                    "username": username,
+                    "password": password,
+                    "municipality": municipality,
+                },
             )
         else:
             user_creds = models.HousingStatCreds.objects.filter(owner=user.username)
@@ -53,8 +59,4 @@ class TokenProxySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.HousingStatCreds
-        fields = (
-            "username",
-            "password",
-            "token",
-        )
+        fields = ("username", "password", "token", "municipality")

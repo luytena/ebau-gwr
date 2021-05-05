@@ -8,7 +8,11 @@ from rest_framework import status
 @pytest.mark.parametrize(
     "data,success",
     [
-        ({"username": "winstonsmith", "password": "goldstein"}, True),
+        (
+            {"username": "winstonsmith", "password": "goldstein", "municipality": 1444},
+            True,
+        ),
+        ({"username": "winstonsmith", "password": "goldstein"}, False),
         ({"username": "winstonsmith"}, False),
         ({"password": "goldstein"}, False),
     ],
@@ -25,7 +29,10 @@ def test_token_proxy(db, settings, admin_client, requests_mock, data, success):
     )
     if success:
         assert resp.status_code == status.HTTP_201_CREATED
-        assert resp.json() == {"token": "eyIMATOKEN"}
+        assert resp.json() == {
+            "token": "eyIMATOKEN",
+            "municipality": data["municipality"],
+        }
     else:
         assert resp.status_code == status.HTTP_400_BAD_REQUEST
         assert resp.json() == {
@@ -37,8 +44,8 @@ def test_token_proxy(db, settings, admin_client, requests_mock, data, success):
 
 
 @pytest.mark.parametrize(
-    "housing_stat_creds__username,housing_stat_creds__password",
-    [("winstonsmith", "goldstein")],
+    "housing_stat_creds__username,housing_stat_creds__password,housing_stat_creds__municipality",
+    [("winstonsmith", "goldstein", 1344)],
 )
 @pytest.mark.parametrize(
     "data",
@@ -46,6 +53,7 @@ def test_token_proxy(db, settings, admin_client, requests_mock, data, success):
         {"username": "winston_smith", "password": "hunter2"},
         {"username": "winston_smith"},
         {"password": "hunter2"},
+        {"password": "hunter2", "municipality": 3222},
         {},
     ],
 )
