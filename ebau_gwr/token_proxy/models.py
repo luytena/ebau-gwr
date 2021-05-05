@@ -35,3 +35,4 @@ class HousingStatCreds(models.Model):
     owner = models.CharField(max_length=255, unique=True)
     username = models.CharField(max_length=255)
     password = FernetStringField()
+    municipality = models.IntegerField()
