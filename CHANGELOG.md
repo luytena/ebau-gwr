@@ -1,3 +1,8 @@
+# v0.3.0 (2021-05-06)
+
+### Feature
+* **token_proxy:** Add municipality as a field ([`a08e989`](https://github.com/adfinis-sygroup/ebau-gwr/commit/a08e989864063e17803dc2a17da2ce6b58aa1040))
+
 # v0.2.0 (2021-04-14)
 
 ### Feature
