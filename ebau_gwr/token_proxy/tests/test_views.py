@@ -89,3 +89,22 @@ def test_token_proxy_external_error(
     resp = admin_client.post(url)
     assert resp.status_code == status.HTTP_400_BAD_REQUEST
     assert resp.json() == {"401": {"reason": "wrong creds", "source": "external"}}
+
+
+def test_token_proxy_remove_creds(db, settings, admin_client, requests_mock):
+    requests_mock.post(
+        f"{settings.GWR_HOUSING_STAT_BASE_URI}/tokenWS/",
+        json={"success": True, "token": "eyIMATOKEN"},
+    )
+    url = reverse("housingstattoken-list")
+    data = {"username": "testy", "password": "test", "municipality": 1234}
+    resp = admin_client.post(
+        url, data=json.dumps(data), content_type="application/json"
+    )
+
+    url = url + "/logout"
+    resp = admin_client.post(url, content_type="application/json")
+    assert resp.status_code == status.HTTP_204_NO_CONTENT
+
+    resp = admin_client.post(url, content_type="application/json")
+    assert resp.status_code == status.HTTP_404_NOT_FOUND
