@@ -1,3 +1,8 @@
+# v0.4.0 (2021-07-08)
+
+### Feature                                                                                                            
+* Allow removal of housing stat credentials ([`20c1f09`](https://github.com/luytena/ebau-gwr/commit/20c1f09e0d9871236cd6950b89e55e10fb0bfe2c))                                                                               
+
 # v0.3.0 (2021-05-06)
 
 ### Feature
