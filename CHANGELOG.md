@@ -1,8 +1,13 @@
+# v0.4.1 (2021-10-27)
+
+### Fix
+* Gwr base uri config settings ([`9f215b9`](https://github.com/adfinis-sygroup/ebau-gwr/commit/9f215b96dd087524548d60cd65f5b2fa17530ed3))
+* License identifier ([`c01f050`](https://github.com/adfinis-sygroup/ebau-gwr/commit/c01f0509a2dd16ea3a34eef5dd9dc3625f99a8f4))
+
 # v0.4.0 (2021-07-08)
 
-### Feature                                                                                                            
-* Allow removal of housing stat credentials ([`20c1f09`](https://github.com/luytena/ebau-gwr/commit/20c1f09e0d9871236cd6950b89e55e10fb0bfe2c))                                                                               
-
+### Feature
+* Allow removal of housing stat credentials ([`20c1f09`](https://github.com/adfinis-sygroup/ebau-gwr/commit/20c1f09e0d9871236cd6950b89e55e10fb0bfe2c))
 # v0.3.0 (2021-05-06)
 
 ### Feature
