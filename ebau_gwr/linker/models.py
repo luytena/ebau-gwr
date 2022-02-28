@@ -1,8 +1,6 @@
 import uuid
 
-from django.contrib.postgres.fields import JSONField
 from django.db import models
-from generic_permissions.models import PermissionModelMixin, VisibilityModelMixin
 
 
 def make_uuid():
@@ -17,11 +15,11 @@ def make_uuid():
     return uuid.uuid4()
 
 
-class GWRLink(PermissionModelMixin, VisibilityModelMixin, models.Model):
+class GWRLink(models.Model):
     id = models.UUIDField(primary_key=True, default=make_uuid, editable=False)
     eproid = models.CharField(max_length=255)
     local_id = models.CharField(max_length=255)
-    context = JSONField(default=dict)
+    context = models.JSONField(default=dict)
 
     class Meta:
         unique_together = (("eproid", "local_id"),)

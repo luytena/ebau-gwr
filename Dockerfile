@@ -1,4 +1,4 @@
-FROM python:3.6.12-slim-buster@sha256:09bb81730d8d3f1b208d9c5ba4be66747ef29323597bedab6404b884a016685d
+FROM python:3.10.2-slim@sha256:935bff4b6c3acbe4e52b8be48c0e9961ce90355936656e6caed0179984f37acc
 
 WORKDIR /app
 
@@ -24,8 +24,8 @@ ENV DJANGO_SETTINGS_MODULE ebau_gwr.settings
 ENV APP_HOME=/app
 ENV UWSGI_INI /app/uwsgi.ini
 
-ARG REQUIREMENTS=requirements-prod.txt
-COPY requirements-base.txt requirements-prod.txt requirements-dev.txt $APP_HOME/
+ARG REQUIREMENTS=requirements.txt
+COPY requirements.txt requirements-dev.txt $APP_HOME/
 RUN pip install --upgrade --no-cache-dir --requirement $REQUIREMENTS --disable-pip-version-check
 
 USER ebau-gwr
