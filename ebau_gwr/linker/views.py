@@ -1,4 +1,5 @@
-from generic_permissions.views import PermissionViewMixin, VisibilityViewMixin
+from generic_permissions.permissions import PermissionViewMixin
+from generic_permissions.visibilities import VisibilityViewMixin
 from rest_framework_json_api import pagination, parsers, renderers, views
 
 from . import models, serializers

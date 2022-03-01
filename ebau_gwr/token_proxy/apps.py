@@ -7,11 +7,12 @@ class TokenProxyConfig(AppConfig):
 
     def ready(self):
         from django.conf import settings
+
         from .app_settings import DEFAULTS, REQUIRED_SETTINGS
 
         for setting_key, setting_value in DEFAULTS.items():
             setattr(
-                settings, setting_key, getattr(settings, setting_key, setting_value),
+                settings, setting_key, getattr(settings, setting_key, setting_value)
             )
 
         missing_settings = ", ".join(

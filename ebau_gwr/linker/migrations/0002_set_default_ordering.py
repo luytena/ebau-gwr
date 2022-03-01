@@ -10,5 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelOptions(name="gwrlink", options={"ordering": ["-id"]},),
+        migrations.AlterModelOptions(name="gwrlink", options={"ordering": ["-id"]}),
     ]
