@@ -1,3 +1,11 @@
+# v0.5.0 (2022-03-03)
+
+### Breaking
+* This commit updates django to version 3.2 which is a new major version. If this package is consumed as django app, the host app needs to update django as well: ([`4adaec2`](https://github.com/adfinis-sygroup/ebau-gwr/commit/4adaec29c7475b99f411d81de2947f8b9a2c0794))
+
+### Documentation
+* **readme:** Fix build status badge ([`66d222a`](https://github.com/adfinis-sygroup/ebau-gwr/commit/66d222acf85df447f5fd1af3c102751a3b5f62ec))
+
 # v0.4.1 (2021-10-27)
 
 ### Fix
