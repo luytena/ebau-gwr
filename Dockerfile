@@ -11,11 +11,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev wget 
 && chown -R ebau-gwr:root /home/ebau-gwr \
 && chmod -R 770 /home/ebau-gwr
 
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-  # needed for psycopg2
-  libpq-dev
-
 # needs to be set for users with manually set UID
 ENV HOME=/home/ebau-gwr
 
@@ -24,9 +19,11 @@ ENV DJANGO_SETTINGS_MODULE ebau_gwr.settings
 ENV APP_HOME=/app
 ENV UWSGI_INI /app/uwsgi.ini
 
-ARG REQUIREMENTS=requirements.txt
-COPY requirements.txt requirements-dev.txt $APP_HOME/
-RUN pip install --upgrade --no-cache-dir --requirement $REQUIREMENTS --disable-pip-version-check
+RUN pip install -U poetry
+
+ARG INSTALL_DEV_DEPENDENCIES=false
+COPY pyproject.toml poetry.lock $APP_HOME/
+RUN if [ "$INSTALL_DEV_DEPENDENCIES"  = "true" ]; then poetry install; else poetry install --no-dev; fi
 
 USER ebau-gwr
 
