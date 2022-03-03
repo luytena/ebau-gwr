@@ -1,8 +1,6 @@
 # ebau-gwr
 
-**!!!WIP!!!**
-
-[![Build Status](https://github.com/adfinis/ebau-gwr/workflows/Tests/badge.svg)](https://github.com/adfinis/ebau-gwr/actions?query=workflow%3ATests)
+[![Build Status](https://github.com/adfinis-sygroup/ebau-gwr/workflows/Tests/badge.svg)](https://github.com/adfinis-sygroup/ebau-gwr/actions?query=workflow%3ATests)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/adfinis/ebau-gwr/blob/main/setup.cfg#L54)
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/adfinis-sygroup/ebau-gwr)
 
