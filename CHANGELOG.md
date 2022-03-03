@@ -1,4 +1,8 @@
-# v0.5.0 (2022-03-03)
+# Changelog
+
+<!--next-version-placeholder-->
+
+## v0.5.0 (2022-03-03)
 
 ### Breaking
 * This commit updates django to version 3.2 which is a new major version. If this package is consumed as django app, the host app needs to update django as well: ([`4adaec2`](https://github.com/adfinis-sygroup/ebau-gwr/commit/4adaec29c7475b99f411d81de2947f8b9a2c0794))
@@ -6,13 +10,13 @@
 ### Documentation
 * **readme:** Fix build status badge ([`66d222a`](https://github.com/adfinis-sygroup/ebau-gwr/commit/66d222acf85df447f5fd1af3c102751a3b5f62ec))
 
-# v0.4.1 (2021-10-27)
+## v0.4.1 (2021-10-27)
 
 ### Fix
 * Gwr base uri config settings ([`9f215b9`](https://github.com/adfinis-sygroup/ebau-gwr/commit/9f215b96dd087524548d60cd65f5b2fa17530ed3))
 * License identifier ([`c01f050`](https://github.com/adfinis-sygroup/ebau-gwr/commit/c01f0509a2dd16ea3a34eef5dd9dc3625f99a8f4))
 
-# v0.4.0 (2021-07-08)
+## v0.4.0 (2021-07-08)
 
 ### Feature
 * Allow removal of housing stat credentials ([`20c1f09`](https://github.com/adfinis-sygroup/ebau-gwr/commit/20c1f09e0d9871236cd6950b89e55e10fb0bfe2c))
@@ -21,7 +25,7 @@
 ### Feature
 * **token_proxy:** Add municipality as a field ([`a08e989`](https://github.com/adfinis-sygroup/ebau-gwr/commit/a08e989864063e17803dc2a17da2ce6b58aa1040))
 
-# v0.2.0 (2021-04-14)
+## v0.2.0 (2021-04-14)
 
 ### Feature
 * Introduce command to generate fernet key ([`949ef82`](https://github.com/adfinis-sygroup/ebau-gwr/commit/949ef82fe407680b2e961d1564aba5ac956ab50b))
@@ -33,7 +37,7 @@
 ### Documentation
 * **readme:** Document correct env var name for wsk_id ([`39140c9`](https://github.com/adfinis-sygroup/ebau-gwr/commit/39140c97feb94cd8bcdff053b82c6d0e2790386c))
 
-# v0.1.0 (2021-02-22)
+## v0.1.0 (2021-02-22)
 
 ### Feature
 * Integrate django-generic-api-permissions ([`eea32d9`](https://github.com/czosel/ebau-gwr/commit/eea32d9b74416fa75d4a9e667993162b110bba1a))
@@ -50,6 +54,6 @@
 * Drop pyxb, add dependencies to setup.cfg ([`35b98dc`](https://github.com/czosel/ebau-gwr/commit/35b98dc2c078910ca9642386a27fe6dabf16500b))
 * Drop core app ([`1c7c73a`](https://github.com/czosel/ebau-gwr/commit/1c7c73a066e897742507fa00b099c198df8d33f0))
 
-# v0.0.a3 (2021-02-16)
+## v0.0.a3 (2021-02-16)
 
 Initial release
