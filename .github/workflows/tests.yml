@@ -10,65 +10,71 @@ on:
   schedule:
     - cron: "0 0 * * 0"
 
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  gitlint:
-    name: "Gitlint"
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Setup python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
-      - name: Install gitlint
-        run: pip install gitlint
-      - name: Run gitlint
-        run: gitlint --contrib contrib-title-conventional-commits
 
-  lint:
-    name: "Lint"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
       - name: Setup python
         uses: actions/setup-python@v1
         with:
           python-version: "3.10"
+
       - uses: actions/cache@v2
         with:
-          path: ~/.cache/pip
-          key: pip-${{ hashFiles('requirements.txt') }}-${{ hashFiles('requirements.txt') }}
+          path: .venv
+          key: poetry-${{ hashFiles('poetry.lock') }}
           restore-keys: |
-            pip-
+            poetry-
+
       - name: Install dependencies
-        run: pip install --upgrade --no-cache-dir --requirement requirements-dev.txt --disable-pip-version-check
+        run: |
+          pip install -U poetry
+          poetry config virtualenvs.in-project true
+          poetry install
+
+      - name: Run gitlint
+        run: poetry run gitlint --contrib contrib-title-conventional-commits
+
       - name: Run black
-        run: black --check .
+        run: poetry run black --check .
+
       - name: Run flake8
-        run: flake8
+        run: poetry run flake8 --exclude .venv
 
   docker-tests:
-    name: "Docker tests"
+    name: Docker tests
     runs-on: ubuntu-latest
-    needs: [gitlint, lint]
+    needs: [lint]
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Set UID
         run: echo "UID=$(id --user)" > .env
+
       - name: Build the containers
         run: make build
+
       - name: Lint the code
         run: make lint
+
       - name: Run test suite
         run: make test
 
   compatibility-tests:
-    name: "Compatibility tests"
+    name: Compatibility tests
     runs-on: ubuntu-latest
-    needs: [gitlint, lint]
+    needs: [lint]
 
     env:
       ENV: dev
@@ -96,21 +102,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Setup python
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python_version }}
+
       - uses: actions/cache@v2
         with:
-          path: ~/.cache/pip
-          key: pip-${{ hashFiles('requirements.txt') }}-${{ hashFiles('requirements.txt') }}
+          path: .venv
+          key: poetry-${{ hashFiles('poetry.lock') }}
           restore-keys: |
-            pip-
+            poetry-
+
       - name: Set UID
         run: echo "UID=$(id --user)" > .env
+
       - name: Install dependencies
-        run: pip install --upgrade --no-cache-dir --requirement requirements-dev.txt --disable-pip-version-check
-      - name: Run migrations
-        run: ./manage.py migrate
-      - name: Run test suite
-        run: pytest  --no-cov-on-fail --cov --create-db -vv
+        run: |
+          pip install -U poetry
+          poetry config virtualenvs.in-project true
+          poetry install
+
+      - name: Run tests
+        run: poetry run pytest --no-cov-on-fail --cov --create-db -vv

@@ -9,7 +9,7 @@ services:
     build:
       context: .
       args:
-        REQUIREMENTS: requirements-dev.txt
+        INSTALL_DEV_DEPENDENCIES: "true"
     user: "${UID:?Set UID env variable to your user id}"
     volumes:
       - ./:/app

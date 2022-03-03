@@ -14,11 +14,11 @@ start: ## Start the development server
 
 .PHONY: test
 test: ## Test the backend
-	@docker-compose run gwr pytest --no-cov-on-fail --cov --create-db -vv
+	@docker-compose run gwr poetry run pytest --no-cov-on-fail --cov --create-db -vv
 
 .PHONY: lint
 lint: ## Lint the backend
-	@docker-compose run gwr sh -c "black --check . && flake8"
+	@docker-compose run gwr sh -c "poetry run black --check . && poetry run flake8"
 
 .PHONY: bash
 bash: ## Shell into the backend
