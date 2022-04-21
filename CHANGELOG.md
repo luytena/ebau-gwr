@@ -1,7 +1,5 @@
 # Changelog
 
-<!--next-version-placeholder-->
-
 ## v0.5.0 (2022-03-03)
 
 ### Breaking
