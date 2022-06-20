@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.5.2 (2022-06-20)
+
+### Fix
+* **deps:** Update dependencies ([`be92236`](https://github.com/adfinis-sygroup/ebau-gwr/commit/be92236798245053c44d51cac5ec454f1d2be9fb))
+
 ## v0.5.1 (2022-04-21)
 
 ### Fix
