@@ -1,23 +1,14 @@
-import importlib
-import inspect
-
 import pytest
 from django.core.cache import cache
-from factory.base import FactoryMetaClass
 from pytest_factoryboy import register
 from rest_framework.test import APIClient
 
+from ebau_gwr.linker import factories as linker_factories
 from ebau_gwr.oidc_auth.models import OIDCUser
+from ebau_gwr.token_proxy import factories as token_proxy_factories
 
-
-def register_module(module):
-    for name, obj in inspect.getmembers(module):
-        if isinstance(obj, FactoryMetaClass) and not obj._meta.abstract:
-            register(obj)
-
-
-register_module(importlib.import_module(".linker.factories", "ebau_gwr"))
-register_module(importlib.import_module(".token_proxy.factories", "ebau_gwr"))
+register(linker_factories.GWRLinkFactory)
+register(token_proxy_factories.HousingStatCredsFactory)
 
 
 @pytest.fixture
