@@ -9,6 +9,7 @@ class HousingStatCredsFactory(DjangoModelFactory):
     username = Faker("first_name")
     password = Faker("password")
     municipality = Faker("random_int")
+    group = Faker("random_int")
 
     class Meta:
         model = models.HousingStatCreds

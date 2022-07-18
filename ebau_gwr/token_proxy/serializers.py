@@ -6,7 +6,8 @@ from .client import HousingStatClient
 
 
 class TokenProxySerializer(serializers.ModelSerializer):
-    username = serializers.CharField(write_only=True, required=False)
+    username = serializers.CharField(required=False)
+    group = serializers.CharField(write_only=True, required=False)
     password = serializers.CharField(write_only=True, required=False)
     municipality = serializers.IntegerField(required=False)
     token = serializers.SerializerMethodField()
@@ -27,6 +28,17 @@ class TokenProxySerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = self.context["request"].user
+        try:
+            group = self.context["request"].headers["x-camac-group"]
+        except KeyError:
+            raise ValidationError(
+                {
+                    400: {
+                        "source": "internal",
+                        "reason": f'No "x-camac-group" header passed for "{user.username}"',
+                    }
+                }
+            )
 
         username = validated_data.get("username")
         password = validated_data.get("password")
@@ -35,6 +47,7 @@ class TokenProxySerializer(serializers.ModelSerializer):
         if username and password and municipality:
             user_creds, _ = models.HousingStatCreds.objects.update_or_create(
                 owner=user.username,
+                group=group,
                 defaults={
                     "username": username,
                     "password": password,
@@ -42,7 +55,9 @@ class TokenProxySerializer(serializers.ModelSerializer):
                 },
             )
         else:
-            user_creds = models.HousingStatCreds.objects.filter(owner=user.username)
+            user_creds = models.HousingStatCreds.objects.filter(
+                owner=user.username, group=group
+            )
             user_creds.update(**validated_data)
             user_creds = user_creds.first()
             if not user_creds:
@@ -59,4 +74,4 @@ class TokenProxySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.HousingStatCreds
-        fields = ("username", "password", "token", "municipality")
+        fields = ("username", "group", "password", "token", "municipality")
