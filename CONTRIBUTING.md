@@ -69,3 +69,46 @@ pip install pre-commit
 pip install -r requiements-dev.txt -U
 pre-commit install
 ```
+
+## Release
+1. Pull the up to date `main` branch locally
+
+1. Update the remote
+
+   ```bash
+   git fetch [insert your upstream/origin name]
+   ```
+
+1. Get the new version
+
+   ```bash
+   semantic-release version --noop -D version_source=tag
+   ```
+
+1. Update the line `version = "x.x.x"` with your new version in `pyproject.toml`
+
+1. Now generate the change-log
+
+   ```bash
+   semantic-release changelog --noop --unreleased -D version_source=tag
+   ```
+
+1. Append the generated change log with your version at the top of `CHANGELOG.md`
+
+1. Create a pull request with these changes
+
+1. Once merged in main, pull the upstream/origin main again
+
+1. Create a git tag with the following format: `vx.x.x` where `x.x.x` is the previously generated version number
+
+    ```bash
+    git tag -a vx.x.x
+    ```
+
+10. The previous command will open a text editor to annotate the tag. Insert the previously generated change-log and save
+
+11. Push the tag to upstream
+
+    ```bash
+    git push [origin/upstream] vx.x.x
+    ```
