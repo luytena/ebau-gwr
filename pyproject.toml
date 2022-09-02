@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ebau-gwr"
-version = "0.5.2"
+version = "0.6.0"
 description = "GWR synchronisation for ebau projects"
 homepage = "https://github.com/adfinis-sygroup/ebau-gwr"
 repository = "https://github.com/adfinis-sygroup/ebau-gwr"

@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.0 (2022-09-02)
+
+### Feature
+* **hous_stat_creds:** Creds are identified by user and x-camac-group ([`7894081`](https://github.com/adfinis-sygroup/ebau-gwr/commit/789408155bcf92450efac7bf90a42dfe4bf070f2))
+
+### Fix
+* **docker:** Run server with poetry so deps are found ([`cbbbd71`](https://github.com/adfinis-sygroup/ebau-gwr/commit/cbbbd717f670ee9b2ee6ec3af86704bc340ad670))
+
 ## v0.5.2 (2022-06-20)
 
 ### Fix
