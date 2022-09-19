@@ -62,4 +62,7 @@ class GWRLinkFilterSet(FilterSet):
 
     class Meta:
         model = models.GWRLink
-        fields = ["eproid", "local_id", "context"]
+        fields = {
+            "eproid": ["exact", "in"],
+            "local_id": ["exact"],
+        }
