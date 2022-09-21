@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.6.1 (2022-09-21)
+
+### Fix
+* **linker:** Allow "in" lookup for gwr-link eproid filter ([`bcaa1d1`](https://github.com/luytena/ebau-gwr/commit/bcaa1d1b58c285019db2bff466c23c2902a6e41d))
+
 ## v0.6.0 (2022-09-02)
 
 ### Feature
