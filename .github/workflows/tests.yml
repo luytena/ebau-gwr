@@ -20,27 +20,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
+      - name: Install poetry
+        run: pipx install poetry
+
       - name: Setup python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-
-      - uses: actions/cache@v2
-        with:
-          path: .venv
-          key: poetry-${{ hashFiles('poetry.lock') }}
-          restore-keys: |
-            poetry-
+          cache: "poetry"
 
       - name: Install dependencies
-        run: |
-          pip install -U poetry
-          poetry config virtualenvs.in-project true
-          poetry install
+        run: poetry install
 
       - name: Run gitlint
         run: poetry run gitlint --contrib contrib-title-conventional-commits
@@ -57,7 +51,7 @@ jobs:
     needs: [lint]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set UID
         run: echo "UID=$(id --user)" > .env
@@ -101,28 +95,22 @@ jobs:
           - 5432:5432
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - name: Install poetry
+        run: pipx install poetry
 
       - name: Setup python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python_version }}
-
-      - uses: actions/cache@v2
-        with:
-          path: .venv
-          key: poetry-${{ hashFiles('poetry.lock') }}
-          restore-keys: |
-            poetry-
+          cache: "poetry"
 
       - name: Set UID
         run: echo "UID=$(id --user)" > .env
 
       - name: Install dependencies
-        run: |
-          pip install -U poetry
-          poetry config virtualenvs.in-project true
-          poetry install
+        run: poetry install
 
       - name: Run tests
         run: poetry run pytest --no-cov-on-fail --cov --create-db -vv
