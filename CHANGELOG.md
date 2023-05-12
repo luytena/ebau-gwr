@@ -1,9 +1,14 @@
 # Changelog
 
+## v0.6.2 (2023-05-12)
+
+### Fix
+* **deps:** Update dependencies ([`e259b36`](https://github.com/inosca/ebau-gwr/commit/e259b362e87931d2258767c716ee4638eb3be351))
+
 ## v0.6.1 (2022-09-21)
 
 ### Fix
-* **linker:** Allow "in" lookup for gwr-link eproid filter ([`bcaa1d1`](https://github.com/luytena/ebau-gwr/commit/bcaa1d1b58c285019db2bff466c23c2902a6e41d))
+* **linker:** Allow "in" lookup for gwr-link eproid filter ([`bcaa1d1`](https://github.com/inosca/ebau-gwr/commit/bcaa1d1b58c285019db2bff466c23c2902a6e41d))
 
 ## v0.6.0 (2022-09-02)
 
